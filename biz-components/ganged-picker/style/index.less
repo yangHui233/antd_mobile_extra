@@ -1,0 +1,78 @@
+.am-list-address-modal{
+  border-radius: 30px 30px 0 0;
+  .am-modal-content{
+      border-radius: 30px 30px 0 0;
+      .am-list-address-modal-wrapper{
+          border-radius: 30px 30px 0 0;
+          .am-list-address-modal-title{
+              text-align: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              height: 80px;
+              color: #333;
+              font-size: 24px;
+              
+              .am-list-address-modal-title-txt{
+                  flex: 1;
+  
+              }
+              .am-icon{
+                  position: absolute;
+                  right: 20px;
+                  top: 50%;
+                  transform: translateY(-50%);
+              }
+          }
+          .am-list-address-modal-title-list-wrapper{
+              padding-left: 30px;
+              padding-bottom: 40px;
+              padding-top: 20px;
+              border-bottom: 1px solid #dcdcdc;
+              .am-list-address-modal-title-item{
+                  display: flex;
+                  align-items: flex-end;
+                  &:nth-child(n+2){
+                      padding-top: 46px;
+                  }
+                  .am-list-address-modal-title-item-round{
+                      width: 20px;
+                      height: 20px;
+                      border-radius: 50%;
+                      transform: translateX(-50%);
+                      background: #fff;
+                  }
+                  .am-list-address-modal-title-item-txt{
+                      padding-left: 30px;
+                      font-size: 26px;
+                  }
+              }
+          }
+          .am-list-address-modal-list-hit{
+              font-size: 22px;
+              text-align: left;
+              padding-left: 30px;
+              padding-top: 20px;
+              color: #dcdcdc;
+          }
+          .am-list-address-modal-list{
+              height: 56vh;
+              overflow: auto;
+              padding: 10px 0;
+              .am-list-address-modal-item{
+                  padding: 15px 30px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  font-size: 24px;
+                  .am-list-address-modal-item-txt{
+                      flex: 1;
+                      text-align: left;
+                  }
+              }
+          }
+      }
+  }
+
+}
