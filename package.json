@@ -1,7 +1,7 @@
 {
   "name": "antd_mobile_extra",
-  "version": "0.3.0",
-  "description": "Ant Design 移动版的聚宝风格定制版",
+  "version": "0.0.1",
+  "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
     "design"
@@ -17,6 +17,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "dependencies": {
+    "@ant-design/icons-react": "^2.0.1",
     "antd-mobile": "^2.0.0",
     "axios": "^0.19.2",
     "classnames": "^2.2.5",
@@ -100,12 +101,12 @@
     "compile": "BABEL_ENV=dist antd-tools run compile",
     "watch-tsc": "antd-tools run watch-tsc",
     "clean": "antd-tools run clean",
-    "start": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact bisheng start -c ./site/bisheng.kitchen.config.js\"",
+    "start": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "start-hd": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact HD_ENV=hd bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "start-prod": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "site": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact bisheng build -c ./site/bisheng.kitchen.config.js\" && node scripts/copy-app-res",
     "deploy": "npm run clean && npm run site && bisheng gh-pages --push-only",
-    "pub": "set BABEL_ENV=dist && antd-tools run pub"
+    "pub": "cross-env BABEL_ENV=dist antd-tools run pub"
   },
   "config": {
     "port": 8001

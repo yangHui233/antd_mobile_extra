@@ -10,9 +10,7 @@ class GangedPicker extends React.Component<any, any> {
     refs: any;
     constructor(props) {
         super(props);
-
         this.state = {
-            visible: true,
             currentShowIndex: -1,//当前展示列表的级数
             resultData: [],
             listData: []
@@ -44,6 +42,7 @@ class GangedPicker extends React.Component<any, any> {
         this.setState({
             resultData
         }, () => {
+            this.props.onChange(resultData)
             // 当前选择层为最后一层，则返回数据
             if ((currentShowIndex === (maxLayer - 1)) && (resultData.length === maxLayer)) {
                 this.sendResult()
@@ -58,16 +57,8 @@ class GangedPicker extends React.Component<any, any> {
             resultData
         } = this.state
         // 关闭弹框，返回数据
-        this.setState({
-            visible: false
-        }, () => {
-            this.props.getResult(resultData)
-            setTimeout(() => {
-                this.setState({
-                    visible: true
-                })
-            }, 3000)
-        })
+        this.props.getResult(resultData)
+        this.props.onClose && this.props.onClose()
     }
 
     getStyle(index) {
@@ -78,12 +69,19 @@ class GangedPicker extends React.Component<any, any> {
             resultData
         } = this.state
         if (index !== false && index < resultData.length) {
-            return { background: themeColor }
+            return { 
+                border: `2px solid ${themeColor}`,
+                background: themeColor 
+            }
         } else {
-            return { border: `2px solid ${themeColor}` }
+            return { 
+                border: `2px solid ${themeColor}`,
+                background: `#fff`
+            }
         }
     }
     getDataAjax = () => {
+        Toast.loading('');
         let {
             urlArr
         } = this.props
@@ -93,6 +91,7 @@ class GangedPicker extends React.Component<any, any> {
             listData
         } = this.state
         this.handleHttp({
+            type:urlArr[currentShowIndex * 1 + 1].type,
             url:urlArr[currentShowIndex * 1 + 1].url,
             data:urlArr[currentShowIndex * 1 + 1].paramfromt(resultData[currentShowIndex])
         }).then((res:any) => {
@@ -116,7 +115,31 @@ class GangedPicker extends React.Component<any, any> {
     }
     handleHttp = (params)=>{
         const defer = $q.defer()
-        axios(params).then(res=>{
+        let {
+            url,
+            type,
+            data
+        } = params
+        interface theObj {
+            url: string;
+            type: string;
+            [x: string]: any; //动态添加属性
+        }
+        let paramsData:theObj = {
+            url,
+            type
+        }
+        switch (params.type) {
+            case 'get':
+                paramsData.params = data
+                break
+            case 'post':
+                paramsData.data = data
+                break
+            default:
+                break
+        }
+        axios(paramsData).then(res=>{
             defer.resolve(res)
         }).catch(err=>{
             defer.reject(err)
@@ -174,7 +197,6 @@ class GangedPicker extends React.Component<any, any> {
     }
     render() {
         let {
-            visible,
             listData = [],
             currentShowIndex = 0,
             resultData
@@ -185,13 +207,9 @@ class GangedPicker extends React.Component<any, any> {
             urlArr = [],
             className = '',
             animationType = 'slide-up',
-            onClose = () => {
-                this.setState({
-                    visible: false
-                })
-            },
+            onClose = () => {},
             transparent = true,
-
+            visible
         } = this.props
         return (
             currentShowIndex >= 0 ?
@@ -235,7 +253,7 @@ class GangedPicker extends React.Component<any, any> {
                                                 return item && item.label && <div className='am-list-address-modal-title-item'
                                                     style={
                                                         {
-                                                            borderLeft: index > 0 ? `2px solid ${themeColor}` : `none`
+                                                            borderLeft: index > 0 ? `2px solid ${themeColor}` : `2px solid rgba(0,0,0,0)`
                                                         }
                                                     }
                                                     onClick={this.handleTitleCli.bind(this, index)}

@@ -1,6 +1,6 @@
 ---
 category: Components
-type: Biz
+type: Extra
 title: GangedPicker
 subtitle: 联动
 ---
