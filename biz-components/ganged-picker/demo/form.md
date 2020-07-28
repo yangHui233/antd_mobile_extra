@@ -52,14 +52,14 @@ class Test extends React.Component {
                       onChange={this.onChange.bind(this)}
                       urlArr={[{
                            title:'请选择省份',
-                           url:'https://drdrd.zhiyoutec.com/starfruit/userInfo/india/getProvince',
+                           url:'https://XXX',
                            type:'get',
                            paramfromt:(data)=>{
                                 return {}
                            }
                        },{
                            title:'请选择市',
-                           url:'https://drdrd.zhiyoutec.com/starfruit/userInfo/india/getCity',
+                           url:'https://XXX',
                            type:'get',
                            paramfromt:(data)=>{
                              console.log(data,'data==')

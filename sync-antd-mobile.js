@@ -116,16 +116,16 @@ function syncAntd() {
       );
 
       // 创建 相应 cName 目录下的 examples & docs md 文件 (只是从 antd 拷贝过来)
-      fs.copySync(path.join(sourceDir, '/index.en-US.md'), path.join(destDir, '/index.en-US.md'));
-      fs.copySync(path.join(sourceDir, '/index.zh-CN.md'), path.join(destDir, '/index.zh-CN.md'));
-      fs.copySync(path.join(sourceDir, '/demo'), path.join(destDir, '/demo'));
-
+      fs.existsSync(path.join(sourceDir, '/index.en-US.md')) && fs.copySync(path.join(sourceDir, '/index.en-US.md'), path.join(destDir, '/index.en-US.md'));
+      fs.existsSync(path.join(sourceDir, '/index.zh-CN.md')) && fs.copySync(path.join(sourceDir, '/index.zh-CN.md'), path.join(destDir, '/index.zh-CN.md'));
+      fs.existsSync(path.join(sourceDir, '/demo')) && fs.copySync(path.join(sourceDir, '/demo'), path.join(destDir, '/demo'));
       // 删除 用于 react-native 的 demo 文件
-      del.sync([path.join(destDir, '/demo/*.tsx')]);
-
+      fs.existsSync(path.join(destDir, '/demo/*.tsx')) && del.sync([path.join(destDir, '/demo/*.tsx')]);
+     
+      
       // 改变 demo 文件中的 `antd-mobile` 组件库名、为 新的 libName
-      fs.walkSync(path.join(destDir, '/demo')).forEach(function (file) {
-        fs.writeFileSync(file, fs.readFileSync(file).toString()
+      fs.existsSync(path.join(destDir, '/demo')) && fs.walkSync(path.join(destDir, '/demo')).forEach(function (file) {
+        file && fs.writeFileSync(file, fs.readFileSync(file).toString()
           .replace(/\sfrom\s'antd-mobile'/g, ` from '${libName}'`));
       });
 

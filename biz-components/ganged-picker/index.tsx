@@ -81,36 +81,63 @@ class GangedPicker extends React.Component<any, any> {
         }
     }
     getDataAjax = () => {
-        Toast.loading('');
-        let {
-            urlArr
-        } = this.props
         let {
             currentShowIndex,
             resultData,
             listData
         } = this.state
-        this.handleHttp({
-            type:urlArr[currentShowIndex * 1 + 1].type,
-            url:urlArr[currentShowIndex * 1 + 1].url,
-            data:urlArr[currentShowIndex * 1 + 1].paramfromt(resultData[currentShowIndex])
-        }).then((res:any) => {
-            let data = this.props.dealData(res.data)
-            if (data.length === 0) {
-                //无数据，则关闭弹框，返回最终结果
-                this.sendResult()
-                return;
+        let {
+            urlArr,
+            dealData=()=>{
+                return []
             }
+        } = this.props
+        let currentUrlParam =  urlArr[currentShowIndex * 1 + 1]
+        let {
+            type='get',//ajax请求类型
+            url,//请求url
+            paramfromt=()=>{
+                return {}
+            },//发送参数
+            isLoading,//发送请求是否展示loading
+            startCallback=()=>{},//开始发送请求回调
+            endCallback=()=>{}//请求返回回调
+        } = currentUrlParam
+        // 接口请求回调
+        startCallback()
+
+        if(isLoading){
+            Toast.loading('');
+        }
+        
+        this.handleHttp({
+            type:type,
+            url:url,
+            data:paramfromt(resultData[currentShowIndex])
+        }).then((res:any) => {
+            let data = dealData(res.data) || []
             listData = listData.slice(0, currentShowIndex * 0 + 1)
-            listData[currentShowIndex + 1] = data;
+            listData[currentShowIndex + 1] = data || [];
+            this.setState({
+                listData,//渲染数据赋值
+                currentShowIndex: currentShowIndex + 1,//修改渲染级数
+            })
+        }).catch(()=>{
+            listData = listData.slice(0, currentShowIndex * 0 + 1)
+            listData[currentShowIndex + 1] = [];
             this.setState({
                 listData,//渲染数据赋值
                 currentShowIndex: currentShowIndex + 1,//修改渲染级数
             })
         }).finally(() => {
-            setTimeout(() => {
-                Toast.hide()
-            }, 1000)
+            // 接口请求回调
+            endCallback()
+            if(isLoading){
+                setTimeout(() => {
+                    Toast.hide()
+                }, 100)
+            }
+            
         });
     }
     handleHttp = (params)=>{
@@ -185,7 +212,6 @@ class GangedPicker extends React.Component<any, any> {
         let {
             themeColor = '#ff9933'
         } = this.props
-        console.log(currentShowIndex, index, themeColor)
         if (Number(index) === Number(currentShowIndex)) {
             return {
                 color: themeColor
@@ -298,7 +324,9 @@ class GangedPicker extends React.Component<any, any> {
                         </div>
                         <div className='am-list-address-modal-list'>
                             {
-                                listData[currentShowIndex] && listData[currentShowIndex].map((item, index) => {
+                                listData[currentShowIndex] && listData[currentShowIndex].length>0
+                                ?
+                                listData[currentShowIndex].map((item, index) => {
                                     return <div className='am-list-address-modal-item'
                                         key={index}
                                         onClick={this.handleCli.bind(this, item)}>
@@ -318,6 +346,8 @@ class GangedPicker extends React.Component<any, any> {
 
                                     </div>
                                 })
+                                :
+                                ''
                             }
 
                         </div>

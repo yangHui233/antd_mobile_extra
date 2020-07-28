@@ -1,6 +1,6 @@
 {
   "name": "antd_mobile_extra",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
@@ -16,9 +16,11 @@
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "deprecated": "1.0.0 之前均为测试版本,1.0.0之后版本可正常使用",
   "dependencies": {
     "@ant-design/icons-react": "^2.0.1",
     "antd-mobile": "^2.0.0",
+    "antd-tools-compatible": "^5.2.7",
     "axios": "^0.19.2",
     "classnames": "^2.2.5",
     "lodash.throttle": "^4.1.1",
@@ -29,7 +31,6 @@
     "@types/react-dom": "16.8.2",
     "antd": "2.x",
     "antd-mobile-demo-data": "^0.1.1",
-    "antd-tools": "^5.2.7",
     "babel-eslint": "^7.2.3",
     "babel-plugin-import": "^1.6.2",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -59,6 +60,8 @@
     "gulp": "^3.9.1",
     "jest": "^20.0.4",
     "jsonml.js": "^0.1.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.1.0",
     "less-vars-to-js": "^1.1.2",
     "lesshint": "^4.0.2",
     "lint-staged": "^4.0.2",

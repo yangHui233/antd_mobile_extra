@@ -1,11 +1,14 @@
 # antd_mobile_extra
 
-antd_mobile_extra 是 Ant Design Mobile 拓展出的组件。
-我们在 [antd-mobile](http://mobile.ant.design/) 的基础上，新增了组件。
+- antd_mobile_extra 是 Ant Design Mobile 拓展出的组件。
+- 我们在 [antd-mobile](http://mobile.ant.design/) 的基础上，新增了组件。
 
 ## Install & Usage
+- 该项目基于 [antd_mobile_custom_ui_exa](https://github.com/ant-design/antd-mobile-samples/tree/master/web-custom-ui-pro) 进行的开发，更新了ant-tools版本以及修改了部分代码
+- 1.0.0 之前均为测试版本,1.0.0之后版本可正常使用
+- [introduce](docs/react/introduce.md)
 
-[introduce](docs/react/introduce.md)
+
 
 ## 开发
 

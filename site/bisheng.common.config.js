@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
-const replaceLib = require('antd-tools/lib/replaceLib');
+const replaceLib = require('antd-tools-compatible/lib/replaceLib');
 
 const useReact = process.env.DEMO_ENV === 'react';
 const isDev = process.env.NODE_ENV === 'development';
@@ -96,7 +96,7 @@ module.exports = {
   },
   themeConfig: {
     siteTitle: 'ANT DESIGN MOBILE',
-    siteSubTitle: '支付宝移动端组件库',
+    siteSubTitle: 'ANT DESIGN MOBILE 移动端组件库',
     indexDemos: ['drawer'], // for kitchen 这些组件每个 demo 都需要全屏展示，首页直接放其各个 demo 链接
     subListDemos: ['list-view', 'pull-to-refresh'], // for kitchen 这些组件每个 demo 都需要全屏展示，首页直接放其各个 demo 链接
     hashSpliter: '-demo-', // for kitchen URL 中记录到 hash 里的特殊标记
