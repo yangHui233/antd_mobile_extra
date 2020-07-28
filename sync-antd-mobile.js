@@ -92,7 +92,7 @@ function syncAntd() {
     'nav-bar', 'notice-bar', 'popover', 'popup', 'progress',
     'radio', 'refresh-control', 'result', 'search-bar', 'segmented-control', 'slider', 'stepper',
     'steps', 'swipe-action', 'switch', 'tab-bar', 'table', 'tabs', 'tag', 'textarea-item',
-    'toast', 'white-space', 'wing-blank'
+    'toast', 'white-space', 'wing-blank','locale-provider','pull-to-refresh','range','text','view'
   ]
   .forEach(function (cName) {
     // 忽略掉 业务组件目录 里的同名组件

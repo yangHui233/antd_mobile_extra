@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
-const replaceLib = require('@ant-design/tools/lib/replaceLib');
+const replaceLib = require('antd-tools/lib/replaceLib');
 
 const useReact = process.env.DEMO_ENV === 'react';
 const isDev = process.env.NODE_ENV === 'development';

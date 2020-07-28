@@ -1,6 +1,6 @@
 {
   "name": "antd_mobile_extra",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
@@ -25,12 +25,11 @@
     "q": "^1.5.1"
   },
   "devDependencies": {
-    "@ant-design/tools": "^10.0.1",
-    "@babel/plugin-transform-typescript": "^7.10.5",
     "@types/react": "~16.8.3",
     "@types/react-dom": "16.8.2",
     "antd": "2.x",
     "antd-mobile-demo-data": "^0.1.1",
+    "antd-tools": "^5.2.7",
     "babel-eslint": "^7.2.3",
     "babel-plugin-import": "^1.6.2",
     "babel-plugin-transform-runtime": "^6.23.0",
