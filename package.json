@@ -1,6 +1,6 @@
 {
   "name": "antd_mobile_extra",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
@@ -13,7 +13,7 @@
     "themes",
     "theme.js"
   ],
-  "license": "MIT",
+  "license": "UNLICENSED",
   "main": "lib/index.js",
   "module": "es/index.js",
   "deprecated": "1.0.0 之前均为测试版本,1.0.0之后版本可正常使用",
@@ -113,6 +113,11 @@
   },
   "config": {
     "port": 8001
+  },
+  "homepage": "https://github.com/yangHui233/antd_mobile_extra",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yangHui233/antd_mobile_extra"
   },
   "typings": "lib/index.web.d.ts",
   "theme": "./theme.js"

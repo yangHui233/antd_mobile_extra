@@ -2,6 +2,7 @@
 
 - antd_mobile_extra 是 Ant Design Mobile 拓展出的组件。
 - 我们在 [antd-mobile](http://mobile.ant.design/) 的基础上，新增了组件。
+- 目前只新增了联动选择插件，类似于某宝的地址选择插件 GangedPicker,组件用法同 Ant Design Mobile一致
 
 ## Install & Usage
 - 该项目基于 [antd_mobile_custom_ui_exa](https://github.com/ant-design/antd-mobile-samples/tree/master/web-custom-ui-pro) 进行的开发，更新了ant-tools版本以及修改了部分代码
@@ -17,12 +18,15 @@
 
 $ npm i
 $ ./node_modules/.bin/gulp  # 自动同步 antd-mobile 组件和 demo ，并监控文件变化（注意过程中的提示）
+$ npm run start # 运行项目，可直观看到组件样式
+
 ```
 
 访问 
 
 - pc: 本地 http://127.0.0.1:8001 
 - mobile: 本地 http://127.0.0.1:8002 
+
 
 ```sh
 & npm run pub   # 构建并发布到 npm
