@@ -6,7 +6,8 @@
 
 ## Install & Usage
 - 该项目基于 [antd_mobile_custom_ui_exa](https://github.com/ant-design/antd-mobile-samples/tree/master/web-custom-ui-pro) 进行的开发，更新了ant-tools版本以及修改了部分代码
-- 1.0.0 之前均为测试版本,1.0.0之后版本可正常使用
+- 1.0.0 之前均为测试版本,1.0.0以及之后版本可正常使用
+- 1.0.1 修复GangedPicker拓展组件bug
 - [introduce](docs/react/introduce.md)
 
 

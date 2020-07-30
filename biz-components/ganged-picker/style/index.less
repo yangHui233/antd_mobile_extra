@@ -4,6 +4,11 @@
 
 .am-list-address-modal{
   border-radius: 15px 15px 0 0;
+  max-height: 100vh;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
   .am-modal-content{
       border-radius: 15px 15px 0 0!important;
       .am-list-address-modal-wrapper{
@@ -14,9 +19,9 @@
               align-items: center;
               justify-content: center;
               position: relative;
-              height: 40px;
+              height: 22px;
               color: #333;
-              font-size: 12px;
+              font-size: 13px;
               
               .am-list-address-modal-title-txt{
                   flex: 1;
@@ -34,11 +39,16 @@
               padding-bottom: 20px;
               padding-top: 10px;
               border-bottom: 1px solid #dcdcdc;
+              max-height: 25vh;
+              overflow: auto;
+              &::-webkit-scrollbar {
+                display: none; /* Chrome Safari */
+              }
               .am-list-address-modal-title-item{
                   display: flex;
                   align-items: flex-end;
                   &:nth-child(n+2){
-                      padding-top: 23px;
+                      padding-top: 18px;
                   }
                   .am-list-address-modal-title-item-round{
                       width: 10px;

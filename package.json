@@ -1,6 +1,6 @@
 {
   "name": "antd_mobile_extra",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
@@ -16,7 +16,6 @@
   "license": "UNLICENSED",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "deprecated": "1.0.0 之前均为测试版本,1.0.0之后版本可正常使用",
   "dependencies": {
     "@ant-design/icons-react": "^2.0.1",
     "antd-mobile": "^2.0.0",

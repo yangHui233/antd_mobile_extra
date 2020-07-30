@@ -33,7 +33,7 @@ class GangedPicker extends React.Component<any, any> {
 
         let maxLayer = urlArr.length;
 
-        resultData = resultData.slice(0, currentShowIndex * 0 + 1)
+        resultData = resultData.slice(0, currentShowIndex * 1 + 1)
         // 取出value对应的项
         resultData[currentShowIndex] = listData[currentShowIndex].filter(item => {
             return item.value === val
@@ -116,18 +116,18 @@ class GangedPicker extends React.Component<any, any> {
             data:paramfromt(resultData[currentShowIndex])
         }).then((res:any) => {
             let data = dealData(res.data) || []
-            listData = listData.slice(0, currentShowIndex * 0 + 1)
-            listData[currentShowIndex + 1] = data || [];
+            listData = listData.slice(0, currentShowIndex * 1 + 1)
+            listData[currentShowIndex * 1 + 1] = data || [];
             this.setState({
                 listData,//渲染数据赋值
                 currentShowIndex: currentShowIndex + 1,//修改渲染级数
             })
         }).catch(()=>{
-            listData = listData.slice(0, currentShowIndex * 0 + 1)
-            listData[currentShowIndex + 1] = [];
+            listData = listData.slice(0, currentShowIndex * 1 + 1)
+            listData[currentShowIndex * 1 + 1] = [];
             this.setState({
                 listData,//渲染数据赋值
-                currentShowIndex: currentShowIndex + 1,//修改渲染级数
+                currentShowIndex: currentShowIndex * 1 + 1,//修改渲染级数
             })
         }).finally(() => {
             // 接口请求回调
