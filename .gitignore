@@ -23,7 +23,7 @@ nohup.out
 _site
 dist
 lib
-ant-design-mobile
+# ant-design-mobile
 components
 es
 package-lock
