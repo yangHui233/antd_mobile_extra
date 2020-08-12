@@ -105,7 +105,8 @@
     {% if isDev %}
     {% else %}
       {% if useReact %}
-        <script src="https://as.alipayobjects.com/g/component/??react/15.6.1/react.min.js,react/15.6.1/react-dom.min.js"></script>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
       {% else %}
       {% endif %}
       <!-- react-router@3.0.5 -->
