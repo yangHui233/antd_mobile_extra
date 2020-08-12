@@ -19,7 +19,7 @@
   "dependencies": {
     "@ant-design/icons-react": "^2.0.1",
     "antd-mobile": "^2.0.0",
-    "antd-tools-compatible": "^5.2.7",
+    "antd-tools-compatible": "^5.2.8",
     "axios": "^0.19.2",
     "classnames": "^2.2.5",
     "lodash.throttle": "^4.1.1",
@@ -106,7 +106,7 @@
     "start": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "start-hd": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact HD_ENV=hd bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "start-prod": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact bisheng start -c ./site/bisheng.kitchen.config.js\"",
-    "site": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=preact bisheng build -c ./site/bisheng.kitchen.config.js\" ",
+    "site": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.kitchen.config.js\"",
     "deploy": "npm run clean && npm run site && bisheng gh-pages --push-only",
     "pub": "cross-env BABEL_ENV=dist antd-tools run pub"
   },
