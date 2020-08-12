@@ -13,7 +13,7 @@ const kitchenConfig = {
   root: '/kitchen-sink/',
   entryName: 'kitchen-sink',
   theme: './ant-design-mobile/site/kitchen/src',
-  htmlTemplate: path.join(__dirname, '../ant-design-mobile/site/kitchen/src/static/template.html'),
+  htmlTemplate: path.join(__dirname, './kitchen/template.html'),
 };
 
 if (process.env.HD_ENV === 'hd') {
