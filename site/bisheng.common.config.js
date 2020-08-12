@@ -35,6 +35,7 @@ const preactAlias = {
 
 const prodExternals = useReact ? reactExternals : preactExternals;
 
+console.log(prodExternals,'prodExternals=====')
 module.exports = {
   filePathMapper(filePath) {
     if (filePath === '/index.html') {

@@ -24,6 +24,6 @@ _site
 dist
 lib
 # ant-design-mobile
-components
+# components
 es
 package-lock
