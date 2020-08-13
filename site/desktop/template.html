@@ -43,7 +43,7 @@
           return window.navigator.language.toLowerCase() === 'zh-cn'; // wtf safari is 'zh-CN', while chrome and other is 'zh-CN'
         }
         if (checkIfMobile()) {
-          var url = location.port ? 'http://127.0.0.1:8002/' : window.location.origin + '/kitchen-sink/';
+          var url = location.port ? 'http://127.0.0.1:8002/' : window.location.origin + '{{ root }}';
           if (checkIfCn()) {
             url = url + '?lang=zh-CN';
           } else {

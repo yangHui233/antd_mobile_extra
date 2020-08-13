@@ -108,7 +108,8 @@
     "start-prod": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "site": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react pubUrl=/antd_mobile_extra/ bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react pubUrl=/antd_mobile_extra/ bisheng build -c ./site/bisheng.kitchen.config.js\"",
     "deploy": "npm run clean && npm run site && bisheng gh-pages --push-only",
-    "pub": "cross-env BABEL_ENV=dist antd-tools run pub"
+    "pub": "npm run login && npm run && cross-env BABEL_ENV=dist antd-tools run pub",
+    "login": ""
   },
   "config": {
     "port": 8001
