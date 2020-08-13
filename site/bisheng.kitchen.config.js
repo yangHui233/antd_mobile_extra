@@ -4,17 +4,20 @@ const rucksack = require('rucksack-css');
 const autoprefixer = require('autoprefixer');
 const commonConfig = require('./bisheng.common.config');
 
+
 const kitchenConfig = {
   port: 8002,
   source: {
     components: './components',
   },
   output: './_site/kitchen-sink',
-  root: '/kitchen-sink/',
+  root: process.env.pubUrl+'kitchen-sink/',
   entryName: 'kitchen-sink',
   theme: './ant-design-mobile/site/kitchen/src',
   htmlTemplate: path.join(__dirname, './kitchen/template.html'),
 };
+
+console.log(process.env.pubUrl,'process.env.pubUrl===',kitchenConfig)
 
 if (process.env.HD_ENV === 'hd') {
   kitchenConfig.postcssConfig = {
