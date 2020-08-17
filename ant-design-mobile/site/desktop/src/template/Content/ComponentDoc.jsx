@@ -23,7 +23,7 @@ export default class ComponentDoc extends React.Component {
 
   constructor(props) {
     super(props);
-
+    
     this.state = {
       currentIndex: this.getIndex(props),
       inMultiDemoMode: getDemos(props).length >= 2,
