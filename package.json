@@ -1,6 +1,6 @@
 {
   "name": "antd_mobile_extra",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
@@ -111,7 +111,8 @@
     "site": "./node_modules/.bin/gulp && cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react pubUrl=/antd_mobile_extra/ bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react pubUrl=/antd_mobile_extra/ bisheng build -c ./site/bisheng.kitchen.config.js\"",
     "deploy": "npm run clean && npm run site && bisheng gh-pages --push-only",
     "pub": "cross-env BABEL_ENV=dist antd-tools run pub",
-    "login": "node ./pub/login.js"
+    "login": "node ./pub/login.js",
+    "gulp": "./node_modules/.bin/gulp"
   },
   "config": {
     "port": 8001

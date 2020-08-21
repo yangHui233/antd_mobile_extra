@@ -62,7 +62,6 @@ class Test extends React.Component {
                            url:'https://sparrow-team.github.io/sparrow/country.js',
                            type:'get',
                            paramfromt:(data)=>{
-                             console.log(data,'data==')
                             return {
                                 provinceId:data.value
                             }
