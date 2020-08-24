@@ -20,6 +20,11 @@ class GangedPicker extends React.Component<any, any> {
         // 界面加载获取数据
         this.getDataAjax()
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.visible && (this.state.currentShowIndex<0) ){
+            this.getDataAjax(true)
+        }
+    }
 
     getData(val) {
         let {
@@ -80,7 +85,7 @@ class GangedPicker extends React.Component<any, any> {
             }
         }
     }
-    getDataAjax = () => {
+    getDataAjax = (isHandle:boolean=false) => {
         let {
             currentShowIndex,
             resultData,
@@ -90,7 +95,9 @@ class GangedPicker extends React.Component<any, any> {
             urlArr,
             dealData=()=>{
                 return []
-            }
+            },
+            toastFunc,
+            errorTxt='请求超时请稍后再试'//接口请求失败，toast提示文案
         } = this.props
         let currentUrlParam =  urlArr[currentShowIndex * 1 + 1]
         let {
@@ -99,16 +106,10 @@ class GangedPicker extends React.Component<any, any> {
             paramfromt=()=>{
                 return {}
             },//发送参数
-            isLoading,//发送请求是否展示loading
-            startCallback=()=>{},//开始发送请求回调
-            endCallback=()=>{}//请求返回回调
+            isLoading//发送请求是否展示loading
         } = currentUrlParam
-        // 接口请求回调
-        startCallback()
 
-        if(isLoading){
-            Toast.loading('');
-        }
+        this.handleLoading(true,isHandle,isLoading)
         
         this.handleHttp({
             type:type,
@@ -122,23 +123,50 @@ class GangedPicker extends React.Component<any, any> {
                 listData,//渲染数据赋值
                 currentShowIndex: currentShowIndex + 1,//修改渲染级数
             })
+            this.handleLoading(false,isHandle,isLoading)
         }).catch(()=>{
-            listData = listData.slice(0, currentShowIndex * 1 + 1)
-            listData[currentShowIndex * 1 + 1] = [];
-            this.setState({
-                listData,//渲染数据赋值
-                currentShowIndex: currentShowIndex * 1 + 1,//修改渲染级数
-            })
-        }).finally(() => {
-            // 接口请求回调
-            endCallback()
-            if(isLoading){
-                setTimeout(() => {
-                    Toast.hide()
-                }, 100)
-            }
+                listData = listData.slice(0, currentShowIndex * 1 + 1)
+                listData[currentShowIndex * 1 + 1] = [];
+                this.setState({
+                    listData,//渲染数据赋值
+                })
+                if(toastFunc){
+                    this.handleLoading(false,isHandle,isLoading)
+                    toastFunc(errorTxt)
+
+                }else{
+                    Toast.info(errorTxt,3,()=>{
+                        this.handleLoading(false,isHandle,isLoading)
+                    })
+                }
+
             
-        });
+
+        })
+    }
+    /**
+     * 
+     * @param isShow true:展示loading/false:隐藏loading
+     * @param isHandle 用户主动触发请求 
+     * @param isLoading 是否展示loading 
+     */
+    handleLoading(isShow:boolean=false,isHandle:boolean=false,isLoading:boolean=false){
+        let {
+            loadingFunc,
+            hideLoadingFunc
+        } = this.props
+        if(isShow){
+            if(isHandle || (!isHandle && isLoading)){
+                loadingFunc ? loadingFunc() : Toast.loading('');
+            }
+        }else{
+            if(isHandle || (!isHandle && isLoading)){
+                hideLoadingFunc ? hideLoadingFunc() : setTimeout(() => {
+                    Toast.hide()
+                }, 100);
+            }
+           
+        }
     }
     handleHttp = (params)=>{
         const defer = $q.defer()
@@ -237,6 +265,7 @@ class GangedPicker extends React.Component<any, any> {
             transparent = true,
             visible
         } = this.props
+
         return (
             currentShowIndex >= 0 ?
                 <Modal

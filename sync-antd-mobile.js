@@ -35,19 +35,20 @@ exports.init = function (cb, isDirect) {
   // 如果没有下载 antd-mobile 仓库源码，则自动进行下载
   var no_antd_mobile = !fs.existsSync(path.join(__dirname, './ant-design-mobile'));
 
-  if (!isDirect && no_antd_mobile) {
-    prompt.start();
-    prompt.get(
-      { message: '需要下载 ant-design-mobile ', name: 'down', default: 'yes' },
-      function (err, result) {
-        if (!err && result.down === 'yes') {
-          downAntd();
-        }
-      }
-    );
-  } else {
-    downAntd();
-  }
+  // if (!isDirect && no_antd_mobile) {
+  //   prompt.start();
+  //   prompt.get(
+  //     { message: '需要下载 ant-design-mobile ', name: 'down', default: 'yes' },
+  //     function (err, result) {
+  //       if (!err && result.down === 'yes') {
+  //         downAntd();
+  //       }
+  //     }
+  //   );
+  // } else {
+  //   downAntd();
+  // }
+  downAntd();
 
   function downAntd() {
     if (no_antd_mobile) {
@@ -66,6 +67,8 @@ exports.init = function (cb, isDirect) {
     syncUtil();
     cb();
     console.log('==== 同步完成。请在终端打开新标签、并运行 npm start ======');
+    // 执行完毕退出终端
+    process.exit(0);
   }
 }
 

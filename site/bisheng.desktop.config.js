@@ -11,8 +11,9 @@ module.exports = Object.assign({}, commonConfig, {
       'CHANGELOG.en-US.md',
     ],
   },
+  root: process.env.pubUrl || '/',
   theme: './ant-design-mobile/site/desktop/src',
-  htmlTemplate: path.join(__dirname, '../ant-design-mobile/site/desktop/src/static/template.html'),
+  htmlTemplate: path.join(__dirname, './desktop/template.html'),
   docVersions: {
   },
 });
