@@ -12,6 +12,7 @@
 - 1.0.1 修复GangedPicker拓展组件bug
 - 1.0.2 更新了antd版本以及修复了npm run site 生成静态文件的bug
 - 1.0.4 优化GangedPicker拓展组件 
+- 1.0.6 优化GangedPicker拓展组件 
 - [introduce](docs/react/introduce.md)
 
 

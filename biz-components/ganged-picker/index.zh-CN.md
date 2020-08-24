@@ -10,7 +10,7 @@ subtitle: 联动
 
 | 成员            | 说明                                                         | 类型     | 默认值             |
 | --------------- | :----------------------------------------------------------- | -------- | ------------------ |
-| urlArr          | `{type:接口请求类型,默认get,title:选择当前项时的标题,url:接口请求url,paramfromt:function 需返回请求参数，该函数默认参数为上一级用户选择的数据,即dealData返回的数据,isLoading:当前请求是否需要loading,默认false}` | array    | -                  |
+| urlArr          | `{type:接口请求类型,默认get,title:选择当前项时的标题,url:接口请求url,paramfromt:function 需返回请求参数，该函数默认参数为上一级用户选择的数据,即dealData返回的数据` | array    | -                  |
 | dealData        | 接口返回数据的回调 ，需返回对象，且必须有label字段           | Function | 无                 |
 | getResult       | 选择最后一项时的回调，返回结果                               | Function | 无                 |
 | onClose         | 关闭弹框回调                                                 | Function | 无                 |
