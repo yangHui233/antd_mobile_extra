@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 
 import '../style/global.less'
 
+const PRECLASS = 'biz-'
 class Global extends React.Component<any, any>{
     params: { bodyEl: HTMLElement; top: number; };
     noWrapperComArr: never[];                      
@@ -86,7 +87,7 @@ class Global extends React.Component<any, any>{
             borderRadius
         } = this.props;
 
-        return <div className='common-dialogmask'
+        return <div className={PRECLASS+'common-dialogmask'}
                 onClick={onMaskClick}
                 style={style}>
                 {
@@ -94,7 +95,7 @@ class Global extends React.Component<any, any>{
                     ?
                     jsx
                     :
-                    <div className={'common-dialog-wrapper '+dialogCalssName}
+                    <div className={PRECLASS+'common-dialog-wrapper '+dialogCalssName}
                          style={{'borderRadius':borderRadius?borderRadius:'10px'}}
                          onClick={this.dialogCli.bind(this)}>
                         {jsx}

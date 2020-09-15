@@ -1,7 +1,11 @@
 import React from 'react'
+import DialogBtn from '../dialog-btn'
+import DialogTitle from '../dialog-title'
 import GetDialogBase from '../_util/getDialogBase'
 import './style/index.less'
 
+
+const PRECLASS = 'biz-'
 class DialogCom extends GetDialogBase{
     constructor(props){
         super(props)
@@ -9,7 +13,8 @@ class DialogCom extends GetDialogBase{
 
     getContent(){
         let { 
-            title, 
+            title,
+            titleType=1, 
             imgClass,
             content,
             btnParam={
@@ -22,33 +27,26 @@ class DialogCom extends GetDialogBase{
                     }
                 }]
             }, 
-            className,
+            className='',
             contentHtml,
             themeColor='#1890ff'
         } = this.props;
-        let btnList = btnParam.list;
-        return  this.domRender(<div className={`dialog1${className ? ' ' + className : ''}`}>
-        {
-            title
-            ?
-            <div className='dialog-title'>
-                {title}
-            </div>
-            :
-            ''
+        return  this.domRender(<div className={`${PRECLASS}dialog-com ${className}`}>
+        <DialogTitle title={title}
+                     type={titleType}
+                     themeColor={themeColor}/>
 
-        }
         {
             imgClass
             ?
-            <div className={'img-icon '+imgClass}></div>
+            <div className={PRECLASS+'img-icon '+imgClass}></div>
             :
             ''
         }
         {
             contentHtml
             ?
-            <div className='dialog-content'
+            <div className={PRECLASS+'dialog-content'}
                  dangerouslySetInnerHTML = {{ __html: contentHtml}}>
             </div>
             :
@@ -57,31 +55,15 @@ class DialogCom extends GetDialogBase{
         {
             content
             ?
-            <div className='dialog-contenttxt'>
+            <div className={PRECLASS+'dialog-contenttxt'}>
                     {content}                      
             </div>
             :
             ''
         }
-        {
-            btnList.length>0
-            ?
-            <div className={'btn-wrapper'+btnParam.type+'_'+btnList.length}>
-                {
-                    btnList.map((item,index)=>{
-                        return  <div style={{color:((btnList.length==2 && index==1)||(btnList.length==1))?themeColor:'#666'}}
-                                    className='btn-item'
-                                    key={index}
-                                    onClick={item.onClick}
-                                    {...item.customAttr}>
-                                    {item.txt}
-                                </div>
-                    })
-                }
-            </div>
-            :
-            ''
-        }
+        <DialogBtn btnParam={btnParam}
+                   GetDialogBase={GetDialogBase}
+                   themeColor={themeColor}></DialogBtn>
        
     </div>)
     }
