@@ -1,16 +1,13 @@
 import React from 'react'
 import './style/index.less'
 
-interface ObjectOf<V>{
-    [_:string]:V
-}
 class btnItem{
     customAttr:object
     txt:string
-    onClick:Function
+    [propName: string]: any
 }
 interface btnParam{
-    list:ObjectOf<btnItem>,
+    list:Array<btnItem>,
     type:1 | 2 | 3
 }
 interface param{
@@ -128,7 +125,7 @@ class DialogBtn extends React.Component<param,any>{
             }
         } = this.props;
         let {
-            list  
+            list = []
         } = btnParam
         return (
             list.length>0
