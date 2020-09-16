@@ -2,6 +2,7 @@ import React from 'react'
 import DialogBtn from '../dialog-btn'
 import DialogTitle from '../dialog-title'
 import DialogList from '../dialog-list'
+import DialogInput from '../dialog-input'
 import GetDialogBase from '../_util/getDialogBase'
 import './style/index.less'
 
@@ -32,7 +33,8 @@ class DialogCom extends GetDialogBase{
             className='',
             contentHtml,
             themeColor='#1890ff',
-            listParam
+            listParam,
+            DialogInputData
         } = this.props;
         return  this.domRender(<div className={`${PRECLASS}dialog-com ${className}`}>
         <DialogTitle title={title}
@@ -71,6 +73,13 @@ class DialogCom extends GetDialogBase{
                     themeColor={themeColor}/>
             :
             ''
+        }
+
+        {
+            DialogInputData && 
+            <DialogInput
+                {...DialogInputData}
+            ></DialogInput>
         }
         
         <DialogBtn btnParam={btnParam}

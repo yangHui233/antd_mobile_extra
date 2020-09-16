@@ -431,6 +431,73 @@ class Test extends React.Component {
                 
                 
                 ]
+            },
+            {
+                title:'有输入框',
+                list:[{
+                    hit:'样式一',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        content:'',
+                        titleType:3,
+                        DialogInputData: {
+                            dataInput: '我是input内容',
+                            placeholder: '我是placeholder',
+                            type:1,
+                            style: {
+                                color: "black",
+                            },
+                            changeInput: (data) => {
+                                console.log('我是change事件回调，回调参数是输入框内容'+data)
+                            }
+                        },
+                        btnParam:{
+                            type:1,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        }, 
+                    },
+                },{
+                    hit:'样式二',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        content:'',
+                        titleType:3,
+                        DialogInputData: {
+                            dataInput: '我是input内容',
+                            placeholder: '我是placeholder',
+                            type:2,
+                            style: {
+                                color: "black",
+                            },
+                            changeInput: (data) => {
+                                console.log('我是change事件回调，回调参数是输入框内容'+data)
+                            }
+                        },
+                        btnParam:{
+                            type:1,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        }, 
+                    },
+                },
+                ]
             }
         ]
         return (

@@ -22,7 +22,7 @@ class Global extends React.Component<any, any>{
     }
     static show(flag, options) {
 		if (document.getElementById('dialogEle')) {
-			   this.hide(flag);
+            this.hide(flag);
 		}
 		let div = document.createElement('div');
 		let id = document.createAttribute("id");
