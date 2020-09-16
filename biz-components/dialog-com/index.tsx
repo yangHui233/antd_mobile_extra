@@ -1,6 +1,7 @@
 import React from 'react'
 import DialogBtn from '../dialog-btn'
 import DialogTitle from '../dialog-title'
+import DialogList from '../dialog-list'
 import GetDialogBase from '../_util/getDialogBase'
 import './style/index.less'
 
@@ -22,6 +23,7 @@ class DialogCom extends GetDialogBase{
                 list:[{
                     customAttr:{},
                     txt:'ok',
+                    style:{},
                     onClick:()=>{
                         GetDialogBase.hide('dialog')
                     }
@@ -29,7 +31,15 @@ class DialogCom extends GetDialogBase{
             }, 
             className='',
             contentHtml,
-            themeColor='#1890ff'
+            themeColor='#1890ff',
+            listParam={
+                type:1,
+                selectIndex:'',
+                list:[{
+                    txt:'需要展示的字段'
+                }],
+                selectCallback:()=>{}
+            }
         } = this.props;
         return  this.domRender(<div className={`${PRECLASS}dialog-com ${className}`}>
         <DialogTitle title={title}
@@ -61,6 +71,15 @@ class DialogCom extends GetDialogBase{
             :
             ''
         }
+        {
+            listParam && listParam.list.length>0
+            ?
+            <DialogList listParam={listParam}
+                    themeColor={themeColor}/>
+            :
+            ''
+        }
+        
         <DialogBtn btnParam={btnParam}
                    GetDialogBase={GetDialogBase}
                    themeColor={themeColor}></DialogBtn>

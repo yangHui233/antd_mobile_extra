@@ -80,6 +80,28 @@ class DialogBtn extends React.Component<param,any>{
                 default:
                     break;
             }
+        }else if(type == 4){
+            switch (len){
+                case 1:
+                 return {
+                     color:themeColor,
+                     borderColor:themeColor
+                 };
+                case 2:
+                    if(index === 1){
+                        return{
+                            background:themeColor
+                        }
+                    }else if(index === 0){
+                        return{
+                            color:themeColor,
+                            borderColor:themeColor
+                        }
+                    }
+                break;
+                default:
+                    break;
+            }
         }
         
     }
@@ -87,6 +109,8 @@ class DialogBtn extends React.Component<param,any>{
         let { 
             btnParam={
                 type:1,
+                borderRadius:0,
+                style:{},
                 list:[{
                     customAttr:{},
                     txt:'ok',
@@ -105,7 +129,12 @@ class DialogBtn extends React.Component<param,any>{
             <div className={PRECLASS+'dialog-btn-wrapper'+btnParam.type+'_'+list.length}>
                 {
                     list.map((item,index)=>{
-                        return  <div style={this.handleBtnStyle(index)}
+                        return  <div style={
+                                            {
+                                            ...(this.handleBtnStyle(index)||{}),
+                                            ...(item.style||{})
+                                            }
+                                        }
                                     className={PRECLASS+'dialog-btn-item'}
                                     key={index}
                                     onClick={item.onClick}

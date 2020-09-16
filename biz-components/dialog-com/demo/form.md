@@ -77,6 +77,26 @@ class Test extends React.Component {
                             }]
                         }, 
                     },
+                },
+                {
+                    hit:'样式四',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        content:'内容',
+                        btnParam:{
+                            type:4,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        }, 
+                    },
                 }]
             },
             {
@@ -167,6 +187,34 @@ class Test extends React.Component {
                             }]
                         }, 
                     },
+                },{
+                    hit:'样式四',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        content:'内容',
+                        btnParam:{
+                            type:4,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'cancel',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            },
+                            {
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        }, 
+                    },
                 }]
             },
             {
@@ -234,6 +282,98 @@ class Test extends React.Component {
                         }, 
                     },
                 },
+                ]
+            },
+            {
+                title:'内容为列表',
+                list:[{
+                    hit:'样式一',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        btnParam:{
+                            type:1,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        },
+                        listParam:{
+                            type:1,
+                            selectIndex:0,
+                            list:[{
+                                txt:'我是内容1'
+                            },{
+                                txt:'我是内容2'
+                            }],
+                            selectCallback:()=>{}
+                        }
+                    },
+                },
+                {
+                    hit:'样式二',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        btnParam:{
+                            type:1,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        },
+                        listParam:{
+                            type:2,
+                            selectIndex:0,
+                            list:[{
+                                txt:'我是内容1'
+                            },{
+                                txt:'我是内容2'
+                            }],
+                            selectCallback:()=>{}
+                        }
+                    },
+                },
+                 {
+                    hit:'样式三',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        btnParam:{
+                            type:1,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        },
+                        listParam:{
+                            type:3,
+                            list:[{
+                                txt:'我是内容1'
+                            },{
+                                txt:'我是内容2'
+                            }],
+                            selectCallback:()=>{}
+                        }
+                    },
+                },
+                
+                
                 ]
             }
         ]
