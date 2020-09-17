@@ -72,7 +72,7 @@ class DialogCom extends GetDialogBase{
             ''
         }
         {
-            listParam && listParam.list.length>0
+            (listParam && listParam.list.length>0)
             ?
             <DialogList listParam={listParam}
                     themeColor={themeColor}/>

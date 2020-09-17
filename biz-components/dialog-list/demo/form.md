@@ -5,7 +5,7 @@ title: 弹框按钮组件
 
 
 ````jsx
-import { DialogBtn } from 'antd_mobile_extra';
+import { DialogList } from 'antd_mobile_extra';
 
 
 class Test extends React.Component {
@@ -15,7 +15,7 @@ class Test extends React.Component {
     componentDidMount(){
     }
     render(){
-        return <DialogBtn />
+        return <DialogList />
     }
 }
 

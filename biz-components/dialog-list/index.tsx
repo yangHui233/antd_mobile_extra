@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'antd-mobile';
+import Icon from 'antd-mobile/lib/icon/index'
 import './style/index.less'
 
 
@@ -14,7 +14,6 @@ class DialogList extends React.Component<param,any>{
     constructor(props){
         super(props)
         this.state={
-            list:props.listParam.list,
             selectIndex:props.selectIndex
         }
     }
@@ -37,7 +36,7 @@ class DialogList extends React.Component<param,any>{
           for (var i = 1; i < 7; i += 2) {
             colorChange.push(parseInt("0x" + color.slice(i, i + 2)));
           }
-          return "RGB(" + colorChange.join(",") + ")";
+          return colorChange.join(",");
         } else {
           return color;
         }
@@ -68,9 +67,9 @@ class DialogList extends React.Component<param,any>{
             case 1:
                 if(index==selectIndex){
                     return {
-                        background:themeColor,
+                        background:`rgba(${this.colorRgb(themeColor)},0.2)`,
                         color:themeColor,
-                        border:`3px solid ${themeColor}`
+                        border:`1.5px solid ${themeColor}`
                     }
                 }
                 return {}
@@ -83,8 +82,6 @@ class DialogList extends React.Component<param,any>{
     render(){
         let {
             selectIndex,
-            list,
-            
         } = this.state
 
         let {
@@ -93,14 +90,24 @@ class DialogList extends React.Component<param,any>{
             listParam
         } = this.props
         let {
-            type
+            type,
+            list,
+            hit
         } = listParam
+        console.log(this.colorRgb(themeColor),'themeColor==')
         const selectTypeArr = [1,2,3]
         return (
             <div className={`${PRECLASS}list-wrapper`}>
-                <div className={`${PRECLASS}list-hit`}>
-
-                </div>
+                {
+                    hit
+                    ?
+                    <div className={`${PRECLASS}list-hit`}>
+                        {hit}
+                    </div>
+                    :
+                    ''
+                }
+                
                 <div className={`${PRECLASS}list-box ${PRECLASS}list-box${type}`}>
                     {
                         list.map((item,index)=>{
