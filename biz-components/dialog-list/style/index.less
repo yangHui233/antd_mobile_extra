@@ -1,7 +1,7 @@
 .biz-dialog-list-wrapper{
-    // *{
-    //     box-sizing: border-box;
-    // }
+    *{
+        box-sizing: border-box;
+    }
     .biz-dialog-list-hit{
         display: flex;
         align-items: center;
@@ -24,7 +24,6 @@
     .biz-dialog-list-box1{
         padding:0 30px 20px;
         .biz-dialog-item-wrapper{
-            width: 100%;
             border-radius: 25px;
             padding: 12px 15px;
             display: flex;
@@ -58,7 +57,6 @@
         padding: 20px 15px 5px;
         .biz-dialog-item-wrapper{
             border-radius: 25px;
-            width: 100%;
             padding: 12px 15px;
             display: flex;
             align-items: center;
@@ -68,6 +66,51 @@
             .biz-dialog-item-txt{
                 flex: 1;
                 padding-right: 5px;
+            }
+        }
+    }
+    .biz-dialog-list-box4{
+        padding: 13px 21px;
+        .biz-dialog-item-wrapper{
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            &:not(:last-child){
+                border-bottom: 1px solid #DDDDDD;
+            }
+            
+            .biz-dialog-item-icon{
+                font-size: 30px;
+                font-weight: 600;
+            }
+            .biz-dialog-item-txt{
+                flex: 1;
+               text-align: left;
+               font-size: 13px;
+               color: #333;
+               line-height: 16px;
+               padding-left: 8.5px;
+
+            }
+        }
+    }
+
+    .biz-dialog-list-box5{
+        padding:0 18px 15px;
+        .biz-dialog-item-wrapper{
+            display: flex;
+            align-items: center;
+            padding-top: 12px;
+            .biz-dialog-item-icon{
+                flex:0 0 7.5px;
+                height: 7.5px;
+                transform: rotate(45deg);
+            }
+            .biz-dialog-item-txt{
+                padding-left: 8.5px;
+                font-size: 12px;
+                line-height: 16px;
+                color: #333;
             }
         }
     }

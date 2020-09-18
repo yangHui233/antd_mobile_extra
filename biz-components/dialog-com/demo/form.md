@@ -372,6 +372,62 @@ class Test extends React.Component {
                         }
                     },
                 },
+                {
+                    hit:'样式三',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        btnParam:{
+                            type:3,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        },
+                        listParam:{
+                            type:4,
+                            list:[{
+                                txt:'我是内容1'
+                            },{
+                                txt:'我是内容2'
+                            }],
+                            selectCallback:()=>{}
+                        }
+                    },
+                },
+                {
+                    hit:'样式三',
+                    param:{
+                        dialogContent:DialogCom,
+                        title:'标题',
+                        btnParam:{
+                            type:3,
+                            list:[{
+                                customAttr:{
+                                    ['data-zybd']:'1'
+                                },
+                                txt:'ok',
+                                onClick:()=>{
+                                    DialogCom.hide('dialog')
+                                }
+                            }]
+                        },
+                        listParam:{
+                            type:5,
+                            list:[{
+                                txt:'我是内容1'
+                            },{
+                                txt:'我是内容2'
+                            }],
+                            selectCallback:()=>{}
+                        }
+                    },
+                },
                 
                 
                 ]

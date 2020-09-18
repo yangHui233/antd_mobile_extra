@@ -2,7 +2,7 @@
 category: Components
 type: Extra
 title: dialogCom
-subtitle: 联动
+subtitle: 基本弹框
 ---
 
 

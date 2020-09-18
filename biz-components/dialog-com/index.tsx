@@ -11,8 +11,8 @@ class DialogCom extends GetDialogBase{
     constructor(props){
         super(props)
     }
-
-    getContent(){
+    
+    render(){
         let { 
             title,
             titleType=1, 
@@ -32,14 +32,7 @@ class DialogCom extends GetDialogBase{
             className='',
             contentHtml,
             themeColor='#1890ff',
-            listParam={
-                type:1,
-                selectIndex:'',
-                list:[{
-                    txt:'需要展示的字段'
-                }],
-                selectCallback:()=>{}
-            }
+            listParam
         } = this.props;
         return  this.domRender(<div className={`${PRECLASS}dialog-com ${className}`}>
         <DialogTitle title={title}

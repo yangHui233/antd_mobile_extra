@@ -29,9 +29,12 @@ class Global extends React.Component<any, any>{
 		div.setAttributeNode(id);
 		document.body.appendChild(div);
         id.value = 'dialogEle';
-		ReactDOM.render(new options.dialogContent({
-            ...options
-        }).getContent(), div);
+        let renderDom=React.createElement(
+            options.dialogContent,
+            options,
+            ''
+        )
+		ReactDOM.render(renderDom, div);
     }
     static hide(type) {
 		let dialogEle = document.getElementById('dialogEle');

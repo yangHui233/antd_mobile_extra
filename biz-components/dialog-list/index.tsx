@@ -78,6 +78,28 @@ class DialogList extends React.Component<param,any>{
         }
         
     }
+    handleKey(index){
+        return this.props.listParam.type==4 ? (index > 10 ? index:('0'+index)) :''
+    }
+    handleIconStyle(){
+        let {
+            themeColor,
+            listParam
+        } = this.props
+        let {
+            type,
+        } = listParam
+        if(type == 4){
+            return {
+                color:`rgba(${this.colorRgb(themeColor)},0.3)`
+            }
+        }else if(type == 5){
+            return {
+                background:themeColor
+            }
+        }
+        
+    }
 
     render(){
         let {
@@ -117,6 +139,16 @@ class DialogList extends React.Component<param,any>{
                                      className={`${PRECLASS}item-wrapper ${selectIndex==index?(PRECLASS+'item-selected'):''}`}
                                      {...item.customAttr}
                                      onClick={this.handleItemCli.bind(this,item,index)}>
+                                     {
+                                         [4,5].includes(type*1)
+                                         ?
+                                         <div className={`${PRECLASS}item-icon`}
+                                              style={this.handleIconStyle()}>
+                                             {this.handleKey.call(this,index)}
+                                         </div>
+                                         :
+                                         ''
+                                     }
                                      <div className={`${PRECLASS}item-txt`}>
                                         {item.txt}
                                      </div>
