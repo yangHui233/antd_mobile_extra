@@ -11,8 +11,19 @@ const PRECLASS = 'biz-'
 class DialogCom extends GetDialogBase{
     constructor(props){
         super(props)
+        this.state={
+            postData:null
+        }
     }
-    
+    selectCallback(info,index){
+        console.log(info,index,'info,index===')
+        this.setState({
+            postData:{
+                info,
+                index
+            }
+        })
+    }
     render(){
         let { 
             title,
@@ -25,7 +36,8 @@ class DialogCom extends GetDialogBase{
                     customAttr:{},
                     txt:'ok',
                     style:{},
-                    onClick:()=>{
+                    onClick:(data)=>{
+                        console.log(data,'data==')
                         GetDialogBase.hide('dialog')
                     }
                 }]
@@ -36,6 +48,9 @@ class DialogCom extends GetDialogBase{
             listParam,
             DialogInputData
         } = this.props;
+        let {
+            postData
+        } = this.state
         return  this.domRender(<div className={`${PRECLASS}dialog-com ${className}`}>
         <DialogTitle title={title}
                      type={titleType}
@@ -70,7 +85,8 @@ class DialogCom extends GetDialogBase{
             (listParam && listParam.list.length>0)
             ?
             <DialogList listParam={listParam}
-                    themeColor={themeColor}/>
+                    themeColor={themeColor}
+                    selectCallback={this.selectCallback.bind(this)}/>
             :
             ''
         }
@@ -84,7 +100,8 @@ class DialogCom extends GetDialogBase{
         
         <DialogBtn btnParam={btnParam}
                    GetDialogBase={GetDialogBase}
-                   themeColor={themeColor}></DialogBtn>
+                   themeColor={themeColor}
+                   postData={postData}></DialogBtn>
        
     </div>)
     }

@@ -9,13 +9,18 @@ import '../style/global.less'
 const PRECLASS = 'biz-'
 class Global extends React.Component<any, any>{
     params: { bodyEl: HTMLElement; top: number; };
-    noWrapperComArr: never[];                      
+    noWrapperComArr: Array<string>;                      
     constructor(props){
         super(props)
         this.params = {
             bodyEl: document.body,
 			top: 0
         }
+
+         // 用于组件内部设定不包裹公共div 组件名
+         this.noWrapperComArr=[
+            'DialogLoad'
+        ]
     }
     static dialog(options) {
 		this.show('dialog', options)
@@ -77,6 +82,9 @@ class Global extends React.Component<any, any>{
         e && e.stopPropagation()
     }
     domRender(jsx){
+        let {
+            noWrapperComArr
+        } = this
         let { 
             opacity=0.7
         }=this.props;
@@ -87,8 +95,12 @@ class Global extends React.Component<any, any>{
             onMaskClick = ()=>{},
             isNoWrapper,//是否用common-dialog-wrapper包裹
             dialogCalssName="",//外层包裹div类名
-            borderRadius
+            borderRadius,
+            dialogContent
         } = this.props;
+
+        // 是否用common-dialog-wrapper包裹  noWrapperComArr 用于组件内部设定不包裹组件名
+        isNoWrapper = noWrapperComArr.includes(dialogContent.className) ? true : isNoWrapper
 
         return <div className={PRECLASS+'common-dialogmask'}
                 onClick={onMaskClick}

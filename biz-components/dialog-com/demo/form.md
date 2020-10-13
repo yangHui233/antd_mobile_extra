@@ -298,7 +298,8 @@ class Test extends React.Component {
                                     ['data-zybd']:'1'
                                 },
                                 txt:'ok',
-                                onClick:()=>{
+                                onClick:(data)=>{
+                                    console.log(data,'确认按钮获取结果===')
                                     DialogCom.hide('dialog')
                                 }
                             }]
@@ -327,7 +328,8 @@ class Test extends React.Component {
                                     ['data-zybd']:'1'
                                 },
                                 txt:'ok',
-                                onClick:()=>{
+                                onClick:(data)=>{
+                                    console.log(data,'确认按钮获取结果===')
                                     DialogCom.hide('dialog')
                                 }
                             }]
@@ -356,7 +358,8 @@ class Test extends React.Component {
                                     ['data-zybd']:'1'
                                 },
                                 txt:'ok',
-                                onClick:()=>{
+                                onClick:(data)=>{
+                                    console.log(data,'确认按钮获取结果===')
                                     DialogCom.hide('dialog')
                                 }
                             }]
@@ -384,7 +387,8 @@ class Test extends React.Component {
                                     ['data-zybd']:'1'
                                 },
                                 txt:'ok',
-                                onClick:()=>{
+                                onClick:(data)=>{
+                                    console.log(data,'确认按钮获取结果===')
                                     DialogCom.hide('dialog')
                                 }
                             }]
@@ -412,7 +416,8 @@ class Test extends React.Component {
                                     ['data-zybd']:'1'
                                 },
                                 txt:'ok',
-                                onClick:()=>{
+                                onClick:(data)=>{
+                                    console.log(data,'确认按钮获取结果===')
                                     DialogCom.hide('dialog')
                                 }
                             }]

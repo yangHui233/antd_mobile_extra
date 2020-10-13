@@ -16,7 +16,8 @@ interface btnParam{
 interface param{
     btnParam:btnParam,
     themeColor:string,
-    GetDialogBase:any
+    GetDialogBase:any,
+    postData?:any
 }
 
 const PRECLASS = 'biz-'
@@ -105,6 +106,12 @@ class DialogBtn extends React.Component<param,any>{
         }
         
     }
+    handleBtnCli(fun){
+        let {
+            postData
+        } = this.props
+        fun && (postData ? fun(postData) : fun())
+    }
     render(){
         let { 
             btnParam={
@@ -137,7 +144,7 @@ class DialogBtn extends React.Component<param,any>{
                                         }
                                     className={PRECLASS+'dialog-btn-item'}
                                     key={index}
-                                    onClick={item.onClick}
+                                    onClick={this.handleBtnCli.bind(this,item.onClick)}
                                     {...item.customAttr}
                                     dangerouslySetInnerHTML={{__html:item.txt}}>
                                 </div>

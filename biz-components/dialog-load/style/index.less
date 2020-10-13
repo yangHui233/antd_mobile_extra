@@ -1,0 +1,57 @@
+.biz-dialog-loading-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 136px;
+    .biz-dialog-loading-ani-wrapper{
+        width:89px;
+        height: 89px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-position: center;
+        background-size: 100% 100%;
+        &.biz-dialog-loading-circle{
+            animation: rotateAni 4s cubic-bezier(0.25,0.1,0.25,1);
+        }
+        .biz-dialog-loading-txt{
+            &.loading{
+                width: 23px;
+                height: 32.5px;
+                background-position: center;
+                background-size: 100% 100%;
+            }
+            &.time{
+                font-size: 25px;
+                font-weight: bold;
+            }
+
+        }
+       
+    }
+    .biz-dialog-loading-txt-top{
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        line-height: 22px;
+        font-weight: 700;
+        padding: 18px 24px 34px;
+    }
+    .biz-dialog-loading-txt-bot{
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+@keyframes rotateAni{
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(1080deg); 
+    }
+    
+}
