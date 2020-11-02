@@ -13,16 +13,30 @@ class GangedPicker extends React.Component<any, any> {
         this.state = {
             currentShowIndex: -1,//当前展示列表的级数
             resultData: [],
-            listData: []
+            listData: [],
+            initStatus:0,//首次获取数据接口状态 pending
+            isInitShowLoading:false,//数据初始化加载中，loading加载状态
         };
     }
     componentWillMount() {
         // 界面加载获取数据
-        this.getDataAjax()
+        this.getDataAjax(false,true)
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.visible && (this.state.currentShowIndex<0) ){
-            this.getDataAjax(true)
+            if(this.state.initStatus==2){
+                // 初次接口请求状态为失败
+                this.getDataAjax(true)
+            }else{
+                this.setState({
+                    isInitShowLoading:true
+                },()=>{
+                    // 初次接口请求状态为pending
+                    this.handleLoading(true,true)
+                })
+                
+            }
+            
         }
     }
 
@@ -54,7 +68,7 @@ class GangedPicker extends React.Component<any, any> {
                 return;
             }
 
-            this.getDataAjax()
+            this.getDataAjax(true)
         })
     }
     sendResult() {
@@ -85,7 +99,7 @@ class GangedPicker extends React.Component<any, any> {
             }
         }
     }
-    getDataAjax = (isHandle:boolean=false) => {
+    getDataAjax = (isLoading:boolean=true,isFirst:boolean=false) => {
         let {
             currentShowIndex,
             resultData,
@@ -105,11 +119,10 @@ class GangedPicker extends React.Component<any, any> {
             url,//请求url
             paramfromt=()=>{
                 return {}
-            },//发送参数
-            isLoading//发送请求是否展示loading
+            }//发送参数
         } = currentUrlParam
 
-        this.handleLoading(true,isHandle,isLoading)
+        this.handleLoading(true,isLoading)
         
         this.handleHttp({
             type:type,
@@ -123,7 +136,14 @@ class GangedPicker extends React.Component<any, any> {
                 listData,//渲染数据赋值
                 currentShowIndex: currentShowIndex + 1,//修改渲染级数
             })
-            this.handleLoading(false,isHandle,isLoading)
+            // 接口请求参数回来
+            if(isFirst){
+                this.setState({
+                    initStatus:1
+                })
+            }
+            this.handleLoading(false,isLoading)
+
         }).catch(()=>{
                 listData = listData.slice(0, currentShowIndex * 1 + 1)
                 listData[currentShowIndex * 1 + 1] = [];
@@ -131,39 +151,51 @@ class GangedPicker extends React.Component<any, any> {
                     listData,//渲染数据赋值
                 })
                 if(toastFunc){
-                    this.handleLoading(false,isHandle,isLoading)
+                    this.handleLoading(false,isLoading)
                     toastFunc(errorTxt)
 
                 }else{
                     Toast.info(errorTxt,3,()=>{
-                        this.handleLoading(false,isHandle,isLoading)
+                        this.handleLoading(false,isLoading)
                     })
                 }
-
-            
-
+                // 接口请求参数回来
+                if(isFirst){
+                    this.setState({
+                        initStatus:2
+                    })
+                }
         })
     }
     /**
      * 
      * @param isShow true:展示loading/false:隐藏loading
-     * @param isHandle 用户主动触发请求 
      * @param isLoading 是否展示loading 
      */
-    handleLoading(isShow:boolean=false,isHandle:boolean=false,isLoading:boolean=false){
+    handleLoading(isShow:boolean=false,isLoading:boolean=false){
         let {
             loadingFunc,
             hideLoadingFunc
         } = this.props
+        let {
+            isInitShowLoading
+        } = this.state
         if(isShow){
-            if(isHandle || (!isHandle && isLoading)){
+            if(isLoading){
                 loadingFunc ? loadingFunc() : Toast.loading('');
             }
         }else{
-            if(isHandle || (!isHandle && isLoading)){
+            if(isLoading || isInitShowLoading){
+
                 hideLoadingFunc ? hideLoadingFunc() : setTimeout(() => {
                     Toast.hide()
                 }, 100);
+
+                if(isInitShowLoading){
+                    this.setState({
+                        isInitShowLoading:false
+                    })
+                }
             }
            
         }

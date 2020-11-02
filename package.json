@@ -1,6 +1,6 @@
 {
   "name": "antd_mobile_extra",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Ant Design 移动版组件拓展",
   "keywords": [
     "ant",
@@ -39,8 +39,8 @@
     "bisheng-plugin-description": "^0.1.1",
     "bisheng-plugin-react": "^0.6.0",
     "bisheng-plugin-toc": "^0.4.0",
-    "concurrently": "^3.4.0",
-    "cross-env": "^5.0.1",
+    "concurrently": "^3.6.1",
+    "cross-env": "^5.2.1",
     "css-split-webpack-plugin": "^0.2.5",
     "del": "^2.2.2",
     "dora-plugin-upload": "^0.3.1",
@@ -104,7 +104,7 @@
     "compile": "cross-env BABEL_ENV=dist antd-tools run compile",
     "watch-tsc": "antd-tools run watch-tsc",
     "clean": "antd-tools run clean",
-    "start": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
+    "start": "cross-env --max_old_space_size=9000 NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "start-hd": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react HD_ENV=hd bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "start-prod": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
     "site-pub": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.kitchen.config.js\"",
@@ -112,7 +112,8 @@
     "deploy": "npm run clean && npm run site && bisheng gh-pages --push-only",
     "pub": "cross-env BABEL_ENV=dist antd-tools run pub",
     "login": "node ./pub/login.js",
-    "gulp": "./node_modules/.bin/gulp"
+    "gulp": "./node_modules/.bin/gulp",
+    "start-kitchen":"cross-env --max_old_space_size=9000 NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\""
   },
   "config": {
     "port": 8001

@@ -11,7 +11,7 @@ const kitchenConfig = {
     components: './components',
   },
   output: './_site/kitchen-sink',
-  root: ( process.env.pubUrl || '/' )+'kitchen-sink/',
+  root: ('/' )+'kitchen-sink/',
   entryName: 'kitchen-sink',
   theme: './ant-design-mobile/site/kitchen/src',
   htmlTemplate: path.join(__dirname, './kitchen/template.html'),

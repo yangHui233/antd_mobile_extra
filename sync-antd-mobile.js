@@ -76,6 +76,9 @@ exports.syncBiz = syncBiz;
 
 function syncBiz() {
   bizCs.forEach(function (bc) {
+    if(bc==='_util'){
+      return;
+    }
     fs.copySync(path.join(bizC, './' + bc), path.join(destC, './' + bc));
   });
 }
@@ -168,10 +171,18 @@ function syncAntd() {
 
 function syncUtil(params) {
   const utils = fs.readdirSync('./ant-design-mobile/components/_util');
+  const biz_utils = fs.readdirSync('./biz-components/_util');
   if (!fs.existsSync('./components/_util')) {
     fs.mkdirSync('./components/_util');
   }
+  biz_utils.forEach(item=>{
+    let content = fs.readFileSync(`./biz-components/_util/${item}`);
+    fs.writeFileSync(`./components/_util/${item}`, content);
+  })
   utils.forEach(item => {
+    if(fs.existsSync(`./components/_util/${item}`)){
+        return;
+    }
     let content;
     if (item === 'upgradeTip.tsx') {
       content = '';
@@ -180,6 +191,7 @@ function syncUtil(params) {
     }
     fs.writeFileSync(`./components/_util/${item}`, content);
   })
+  
 }
 
 function mergeEntry() {

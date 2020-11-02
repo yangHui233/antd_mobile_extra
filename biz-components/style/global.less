@@ -1,0 +1,65 @@
+.biz-common-dialogmask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 99;
+    *{
+        box-sizing: border-box;
+    }
+    .biz-common-dialog-wrapper{
+        width: 290px;
+        position: fixed;
+        left: 50%;
+        top: 40%;
+        transform: translateX(-50%) translateY(-50%);
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+        z-index: 100;
+        &.visibily{
+            overflow: visible;
+        }
+    }
+}
+.biz-commonButton-dialogmask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 99;
+    .biz-common-dialog-wrapper{
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 70%;
+        border-radius: 10px 10px 0 0;
+        background: #fff;
+        overflow: hidden;
+        z-index: 100;
+        animation: commonButton 0.3s linear 1;
+        @keyframes commonButton{
+            0%{
+                bottom: -100vh;
+            }
+            100%{
+                bottom: 0;
+            }
+        }
+    }
+    .biz-common-dialog-wrapper-hide{
+        bottom: -100vh;
+        animation: commonHide 0.3s linear 1;
+        @keyframes commonHide{
+            0%{
+                bottom: 0;
+            }
+            100%{
+                bottom: -100vh;
+            }
+        }
+    }
+}
