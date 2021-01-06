@@ -20,7 +20,7 @@
     "@ant-design/icons-react": "^2.0.1",
     "antd-mobile": "^2.0.0",
     "antd-tools-compatible": "^5.2.8",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "classnames": "^2.2.5",
     "lodash.throttle": "^4.1.1",
     "npm-cli-login": "^0.1.1",
